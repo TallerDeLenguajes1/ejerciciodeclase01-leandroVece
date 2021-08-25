@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace taller2
 {
@@ -16,13 +17,14 @@ namespace taller2
                 {
                     num = Convert.ToInt32(Console.ReadLine());
                     if (num < rand.Next(100))
-                        Console.WriteLine("El numero es menor");
+                        Console.WriteLine("El numero que ingresaste es menor");
                     if (num > rand.Next(100))
-                        Console.WriteLine("El numero es mayor");
+                        Console.WriteLine("El numero que ingresaste es mayor");
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     Console.WriteLine("Error al ingresar dato");
+                    GuardarError(ex.Message);
                     num = -1;
                 }
                 finally
@@ -35,5 +37,21 @@ namespace taller2
 
             Console.WriteLine("felicidades acerto en {0}", intento);
         }
+
+     public static void GuardarError(string error)
+        {
+            string nombreArchivo = "registro de error";
+            string formato = ".txt";
+            string fecha = DateTime.Now.ToString();
+            FileStream Archivo = new FileStream(nombreArchivo + formato, FileMode.Create);
+            using (StreamWriter strWrite = new StreamWriter(Archivo))
+            {
+                strWrite.WriteLine("tiempo sucedio el error: {0}",fecha);
+                strWrite.WriteLine("tipo de error: {0}",error);
+                strWrite.Close();
+            }
+
+        }
+     
     }
 }
