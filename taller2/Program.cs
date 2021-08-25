@@ -7,18 +7,19 @@ namespace taller2
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            int num, intento=0;
+            Console.WriteLine("inicie numeros del 1 al 100");
+            int num=0, intento=0;
             Random rand = new Random();
+            int numRand = rand.Next(100);
 
             do
             {
                 try
                 {
                     num = Convert.ToInt32(Console.ReadLine());
-                    if (num < rand.Next(100))
+                    if (num < numRand)
                         Console.WriteLine("El numero que ingresaste es menor");
-                    if (num > rand.Next(100))
+                    if (num > numRand)
                         Console.WriteLine("El numero que ingresaste es mayor");
                 }
                 catch (Exception ex)
@@ -26,16 +27,16 @@ namespace taller2
                     Console.WriteLine("Error al ingresar dato");
                     GuardarError(ex.Message);
                     num = -1;
+                    Console.WriteLine("Intente nuevamente");
                 }
                 finally
                 {
-                    Console.WriteLine("Intente nuevamente");
                     intento++;
                 }
 
-            } while (rand.Next(100) != num);
+            } while (numRand != num);
 
-            Console.WriteLine("felicidades acerto en {0}", intento);
+            Console.WriteLine("felicidades acerto en {0}", intento-1);
         }
 
      public static void GuardarError(string error)
