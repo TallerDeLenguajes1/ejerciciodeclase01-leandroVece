@@ -8,11 +8,17 @@ namespace Problema02
         {
             int num1, num2;
             byte result;
-
-            num1 = 30;
-            num2 = 60;
-            result = Convert.ToByte(num1 * num2);
-            Console.WriteLine("{0} x {1} = {2}", num1, num2, result);
+            try
+            {
+                num1 = 30;
+                num2 = 60;
+                result = Convert.ToByte(num1 * num2);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("La operacion solicitada es demacaido grande para el trabajo selecciondo ¿desea cambiar la operacion?");
+            }
+            
             Console.ReadLine();
         }
     }

@@ -15,7 +15,15 @@ namespace ManejoDeErrores
 
             for (int i = 0; i <= 5; i++)
             {
-                Console.WriteLine(list[i].ToString());
+                try
+                {
+                    Console.WriteLine(list[i].ToString());
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Una sobrecarga de peido a ocurrido, esto no afecta su solicitud");
+                }
+                
             }
             Console.ReadLine();
         }

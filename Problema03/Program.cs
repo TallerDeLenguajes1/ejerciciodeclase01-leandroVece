@@ -48,8 +48,21 @@ namespace Problema03
 
         static void MostrarAuto(Auto auto)
         {
-            Console.WriteLine("{0} - {1}", auto.Modelo, auto.Anio);
-            Console.ReadLine();
+            try
+            {
+                Console.WriteLine("{0} - {1}", auto.Modelo, auto.Anio);
+                Console.ReadLine();
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine("Error al cargar los datos");
+            }
+            finally
+            {
+                Console.WriteLine("toque una tecla para continuar");
+            }
+            
         }
     }
 }
